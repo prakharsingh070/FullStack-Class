@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virat Kohli Shots</title>
+    <style>
+        :root {
+            --text: #f5f7fb;
+            --muted: #b7c0cf;
+            --accent: #ffb703;
+            --accent-2: #2ec4b6;
+            --panel: rgba(9, 16, 28, 0.72);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top, rgba(255, 183, 3, 0.16), transparent 35%),
+                linear-gradient(180deg, #0a1322 0%, #050912 100%);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 48px 20px 24px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 820px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 8px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 999px;
+            color: var(--accent);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        h1 {
+            margin: 18px 0 12px;
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+        }
+
+        .hero p {
+            margin: 0 auto;
+            max-width: 700px;
+            color: var(--muted);
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            line-height: 1.7;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 24px));
+            margin: 0 auto 80px;
+        }
+
+        .slide {
+            position: sticky;
+            top: 0;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            align-items: center;
+            padding: 24px;
+            margin-bottom: 18px;
+            border-radius: 28px;
+            overflow: hidden;
+            background: var(--panel);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+        }
+
+        .slide:nth-child(odd) {
+            background: linear-gradient(135deg, rgba(255, 183, 3, 0.16), rgba(9, 16, 28, 0.82));
+        }
+
+        .slide:nth-child(even) {
+            background: linear-gradient(135deg, rgba(46, 196, 182, 0.16), rgba(9, 16, 28, 0.82));
+        }
+
+        .shot-text {
+            padding: 24px;
+        }
+
+        .shot-tag {
+            display: inline-block;
+            margin-bottom: 14px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #08111d;
+            background: linear-gradient(135deg, var(--accent), #ffd166);
+        }
+
+        .slide h2 {
+            margin: 0 0 12px;
+            font-size: clamp(1.9rem, 4vw, 3.4rem);
+            line-height: 1.05;
+        }
+
+        .slide p {
+            margin: 0 0 18px;
+            color: var(--muted);
+            line-height: 1.75;
+            max-width: 52ch;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .stats span {
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text);
+            font-size: 0.92rem;
+        }
+
+        .shot-media {
+            position: relative;
+            min-height: 72vh;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .shot-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(1.06) contrast(1.02);
+        }
+
+        .shot-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.45) 100%);
+        }
+
+        .footer-note {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.95rem;
+            padding: 10px 0 40px;
+        }
+
+        @media (max-width: 900px) {
+            .slide {
+                grid-template-columns: 1fr;
+                padding: 18px;
+            }
+
+            .shot-media {
+                min-height: 52vh;
+                order: -1;
+            }
+
+            .shot-text {
+                padding: 6px 6px 16px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding-top: 28px;
+            }
+
+            .container {
+                width: min(100% - 14px, 1180px);
+            }
+
+            .slide {
+                border-radius: 20px;
+                gap: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="eyebrow">Virat Kohli Highlights</span>
+            <h1>Shots that turn pressure into style.</h1>
+            <p>
+                A sticky scrolling tribute to Virat Kohli's class, timing, and fearless stroke play.
+                Scroll down to move through four powerful moments, each framed with color, text, and a premium card layout.
+            </p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="slide">
+            <div class="shot-text">
+                <span class="shot-tag">Cover Drive</span>
+                <h2>Elegant, precise, and impossible to stop.</h2>
+                <p>
+                    Kohli's trademark cover drive combines balance and timing, sending the ball through the gap with clean authority.
+                </p>
+                <div class="stats">
+                    <span>Classic off-side punch</span>
+                    <span>Soft hands</span>
+                    <span>Perfect balance</span>
+                </div>
+            </div>
+            <div class="shot-media">
+                <img src="https://thefederal.com/h-upload/2023/10/19/418006-virat-kohli-ind-ban-wc2.webp" alt="Virat Kohli playing a cover drive">
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="shot-text">
+                <span class="shot-tag">Pull Shot</span>
+                <h2>Controlled aggression against pace.</h2>
+                <p>
+                    When the ball climbs, Kohli answers with a powerful pull shot that stays compact and driven through the leg side.
+                </p>
+                <div class="stats">
+                    <span>Quick transfer</span>
+                    <span>Strong wrists</span>
+                    <span>High intent</span>
+                </div>
+            </div>
+            <div class="shot-media">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSAu_sUpIBK4vVBjJET1NdptS1KQr_kAwSt1P15ERgrg&s=10" alt="Virat Kohli playing a pull shot">
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="shot-text">
+                <span class="shot-tag">Lofted Shot</span>
+                <h2>Taking the game over the field.</h2>
+                <p>
+                    This is the release shot, where timing and confidence combine to send the ball into the stands with intent.
+                </p>
+                <div class="stats">
+                    <span>Big-match mindset</span>
+                    <span>Clean follow-through</span>
+                    <span>Maximum impact</span>
+                </div>
+            </div>
+            <div class="shot-media">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ80QtDsuzkreAtOOPt7N7FUoSG2hgXX-wj09hUonsAbA&s=10" alt="Virat Kohli playing a lofted shot">
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="shot-text">
+                <span class="shot-tag">Chase Mode</span>
+                <h2>Composure when the scoreboard tightens.</h2>
+                <p>
+                    Virat Kohli is known for chasing with calm intent, building innings through sharp decision-making and fearless stroke play.
+                </p>
+                <div class="stats">
+                    <span>Match awareness</span>
+                    <span>Ice-cold finishing</span>
+                    <span>Relentless consistency</span>
+                </div>
+            </div>
+            <div class="shot-media">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREMY6ccqUmBJxn-M4BL5IElCsMQc2x9Ib29xspq_sfqA&s=10" alt="Virat Kohli celebrating a shot">
+            </div>
+        </section>
+    </div>
+
+    <div class="footer-note">Designed as a sticky story layout for Virat Kohli's signature shots.</div>
+</body>
+</html>

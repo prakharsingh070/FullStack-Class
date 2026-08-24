@@ -1,0 +1,12 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+.box{
+    background-color: aliceblue;
+    background: blue;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    
+}
