@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        button:hover{
+            background-color:blue;
+            color:white;
+        }
+
+        button:active{
+            background-color: black;
+            color:white;
+        }
+
+        a:link{
+            text-decoration: none;
+            color:black;
+        }
+        a:visited{
+            color:green;
+        }
+        input{
+            border-width:0px 0px 3px 0px;
+            border-color:black;
+            display:block;
+            margin-top:3%;
+            font-size:25px;
+        }
+        input:required{
+            border-color:red;
+        }
+        input:optional{
+            border-color:green;
+        }
+        input:enabled{
+            background-color:transparent;
+            box-shadow:0px 0px 3px black;
+        }
+        input:disabled{
+            background-color:grey;
+            border-color:darkgrey;
+        }
+        input:valid{
+            background-color:green;
+        }
+        input:invalid{
+            background-color:red;
+        }
+        input:in-range{
+            background-color:aqua;
+        }
+        input:out-of-range{
+            background-color:orange;
+        }
+        li:nth-child(2n){
+            background-color:yellow;
+        }
+        input:read-only{
+            border-width: 0px;
+            box-shadow: 0 0 0 transparent;
+            background: grey;
+            color: white;
+        }
+        input:focus{
+            box-shadow: 0 0 15px black;
+        }
+    </style>
+</head>
+<body>
+    <button>Click ME </button>
+    <a href="#">Link</a>
+    <input type="text" placeholder="First name" required/>
+    <input type="text" placeholder="Middle name"/>
+    <input type="text" placeholder="Last name" required/>
+    <input type="text" value="Mathura" disabled/>
+    <input type="email" placeholder="Email"/>
+    <input type="number" placeholder="Age" min="1" max="100"/>
+    <input type="text" value="Mr." readonly>
+     
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ul>
+</body>
+</html>
