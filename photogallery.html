@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: aliceblue;
+            padding: 20px;
+        }
+        div>h2{
+            text-align: center;
+            margin: 20px 0 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px; 
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .item{
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .item img{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .item:hover img{
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Photo Gallery</h2>
+    <div class="container">
+        <div class="item">
+            <img href=https://www.google.com/imgres?q=bmw%20cars&imgurl=https%3A%2F%2Fwww.supercars.net%2Fblog%2Fwp-content%2Fuploads%2F2024%2F03%2F2021-BMW-M3-Competition-006-1536.jpg&imgrefurl=https%3A%2F%2Fwww.supercars.net%2Fblog%2Fall-brands%2Fbmw%2Fbmw-current-models%2F&docid=3lCj8A6lJHRWcM&tbnid=WFe2btCpGg0lnM&vet=12ahUKEwjoxeGG1NuWAxWx2TgGHfP6K7QQnPAOegUIjgEQAA..i&w=2048&h=1536&hcb=2&ved=2ahUKEwjoxeGG1NuWAxWx2TgGHfP6K7QQnPAOegUIjgEQAA"><img>
+        </div>
+        <div class="item">
+            <img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfHYDQJJpxeA6QXeJcOKbByexY4mqK4v3WA4jd5ecXxQ&s=10"><img>
+        </div>
+        <div class="item">
+            <img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpf4Pu0osYMlO66jw3Zgqv_4QRGEmy0p53gU3EN7gMlg&s=10"><img>
+        </div>
+        <div class="item">
+            <img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAQ9QTwtnTVFJCyZW7co_ExpmW4VEA_b3UWCTgvoDqYA&s=10"><img>
+        </div>
+
+        <div class="item">
+            <img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuN59eUaMkuuCruTRNL21hsXSOFfEszoD4bqPLRZbhAw&s=10"><img>
+        </div>
+        <div class="item">
+            <img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfHYDQJJpxeA6QXeJcOKbByexY4mqK4v3WA4jd5ecXxQ&s=10"><img>
+        </div>
+        <div class="item">
+            <img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpf4Pu0osYMlO66jw3Zgqv_4QRGEmy0p53gU3EN7gMlg&s=10"><img>
+        </div>
+        <div class="item">
+            <img href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAQ9QTwtnTVFJCyZW7co_ExpmW4VEA_b3UWCTgvoDqYA&s=10"><img>
+        </div>
+
+    </div>
+</body>
+</html>

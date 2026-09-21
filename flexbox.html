@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+            background:aliceblue;
+            border: 1px solid black;
+            flex-direction: column;
+        }
+        .card {
+            width: 300px;
+            height: 500px;
+
+            background: linear-gradient(pink, white , to bottom);
+            border-radius: 20px;
+
+            position: relative;
+            display :flex ;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+         button {
+            width: 100px;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            background-color: pink;
+            color: black;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 10px;
+            margin-top: 20px; 
+        }
+
+        button:hover{
+            background-color:blue;
+
+            input{
+                width: 100%;
+                height: 50px;
+                margin:10px;
+                border-radius: 10px;
+                box-shadow: inset 0px 0px 5px black;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Task 1 - Center a Login Card</h1>
+        <div class="card">
+            <h2>Login</h2>
+            
+                <input type="text" placeholder="Enter Username" required>
+                <input type="password" placeholder="Enter Password" required>
+                <button type="submit">Login</button>
+            
+    </div>
+    </div>
+</body>
+</html>

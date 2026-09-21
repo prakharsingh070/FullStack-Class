@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid Dashboard</title>
+  <style>
+    /* 1. Global Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #f3f4f6;
+      color: #1f2937;
+    }
+
+    /* 2. Main Dashboard Grid Layout */
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: 240px 1fr; /* Left sidebar: 240px, Right content: remaining space */
+      grid-template-rows: 60px 1fr auto;  /* Header: 60px, Main Body: flexible, Footer: automatic */
+      grid-template-areas: 
+        "header  header"
+        "sidebar main-content"
+        "footer  footer";
+      min-height: 100vh;
+    }
+
+    /* 3. Assigning Elements to Grid Areas */
+    .header {
+      grid-area: header;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      z-index: 10;
+    }
+
+    .sidebar {
+      grid-area: sidebar;
+      background-color: #1f2937;
+      color: #ffffff;
+      padding: 24px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .sidebar li {
+      padding: 12px;
+      margin-bottom: 8px;
+      background-color: #374151;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .footer {
+      grid-area: footer;
+      background-color: #ffffff;
+      border-top: 1px solid #e5e7eb;
+      text-align: center;
+      padding: 16px;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* 4. Main Body Wrapper (Holds everything right of the sidebar) */
+    .main-content {
+      grid-area: main-content;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px; /* Space between the upper grid section and lower box section */
+    }
+
+    /* 5. Upper Section: 2x3 Grid Boxes (2 rows, 3 columns) */
+    .stat-boxes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+      grid-template-rows: repeat(2, 120px);   /* 2 rows, each 120px high */
+      gap: 16px;
+    }
+
+    /* 6. Lower Section: 2 Large Bottom Boxes */
+    .bottom-boxes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+      min-height: 300px;                     /* Minimum height for the charts/data area */
+      gap: 16px;
+    }
+
+    /* Generic UI Styling for Dashboard Components */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card h3 {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .card .value {
+      font-size: 1.75rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-container">
+    
+    <!-- Header -->
+    <header class="header">
+      <div>Dashboard Admin Panel</div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>Navigation</h3>
+      <ul>
+        <li>Overview</li>
+        <li>Analytics</li>
+        <li>Settings</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Upper Section: 2x3 Stat Box Grid -->
+      <section class="stat-boxes-grid">
+        <div class="card">
+          <h3>Total Users</h3>
+          <div class="value">12,450</div>
+        </div>
+        <div class="card">
+          <h3>Revenue</h3>
+          <div class="value">$45,231</div>
+        </div>
+        <div class="card">
+          <h3>Active Sessions</h3>
+          <div class="value">1,102</div>
+        </div>
+        <div class="card">
+          <h3>Bounce Rate</h3>
+          <div class="value">42.3%</div>
+        </div>
+        <div class="card">
+          <h3>Conversions</h3>
+          <div class="value">3.4%</div>
+        </div>
+        <div class="card">
+          <h3>Open Tickets</h3>
+          <div class="value">14</div>
+        </div>
+      </section>
+
+      <!-- Lower Section: 2 Large Boxes below -->
+      <section class="bottom-boxes-grid">
+        <div class="card">
+          <h3>Main Analytics Chart</h3>
+          <p style="color: #9ca3af; margin-top: 10px;">[Visual placeholder for database chart data]</p>
+        </div>
+        <div class="card">
+          <h3>Recent Activities</h3>
+          <p style="color: #9ca3af; margin-top: 10px;">[Visual placeholder for real-time activity log]</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      &copy; 2026 Dashboard Application. All rights reserved.
+    </footer>
+
+  </div>
+
+</body>
+</html>
