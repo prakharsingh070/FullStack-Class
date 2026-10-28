@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Quiz Arena</title>
+  <style>
+    :root {
+      --blue: #2457a6;
+      --light-blue: #eef4ff;
+      --green: #258a4a;
+      --red: #c0392b;
+      --dark: #243447;
+      --gray: #667085;
+      --border: #d8e0eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--dark);
+      background: #f4f7fb;
+    }
+
+    .app {
+      width: min(720px, 92%);
+      margin: 40px auto;
+    }
+
+    header {
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 32px;
+    }
+
+    header p {
+      margin: 0;
+      color: var(--gray);
+    }
+
+    .card {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 4px 14px rgba(36, 52, 71, 0.08);
+    }
+
+    .top-row,
+    .bottom-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .top-row {
+      margin-bottom: 12px;
+      color: var(--gray);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .progress {
+      height: 9px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #e6ebf2;
+    }
+
+    .progress-bar {
+      width: 20%;
+      height: 100%;
+      background: var(--blue);
+      transition: width 0.2s ease;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      font-size: 24px;
+    }
+
+    .options {
+      display: grid;
+      gap: 11px;
+    }
+
+    .option {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--border);
+      border-radius: 7px;
+      color: var(--dark);
+      background: #fff;
+      font-size: 16px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .option:hover:not(:disabled) {
+      border-color: var(--blue);
+      background: var(--light-blue);
+    }
+
+    .option.correct {
+      border-color: var(--green);
+      background: #e6f6eb;
+      color: #176b37;
+    }
+
+    .option.wrong {
+      border-color: var(--red);
+      background: #fdebea;
+      color: #982b20;
+    }
+
+    .option:disabled {
+      cursor: default;
+    }
+
+    .feedback {
+      min-height: 42px;
+      margin-top: 16px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      background: #f7f8fa;
+      color: var(--gray);
+      line-height: 1.4;
+    }
+
+    .feedback:empty {
+      display: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .primary,
+    .secondary {
+      padding: 11px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .primary {
+      border: 1px solid var(--blue);
+      color: #fff;
+      background: var(--blue);
+    }
+
+    .primary:hover {
+      background: #1d4788;
+    }
+
+    .secondary {
+      border: 1px solid var(--border);
+      color: var(--dark);
+      background: #fff;
+    }
+
+    .secondary:hover {
+      background: #f3f5f8;
+    }
+
+    .bottom-row {
+      margin-top: 22px;
+    }
+
+    .timer {
+      color: var(--red);
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .result {
+      text-align: center;
+    }
+
+    .result h2 {
+      margin-bottom: 10px;
+    }
+
+    .score {
+      margin: 8px 0;
+      color: var(--blue);
+      font-size: 42px;
+      font-weight: bold;
+    }
+
+    .review-list {
+      margin: 20px 0;
+      padding: 0;
+      list-style: none;
+      text-align: left;
+    }
+
+    .review-list li {
+      margin-bottom: 12px;
+      padding: 12px;
+      border-left: 4px solid var(--red);
+      background: #fff5f4;
+    }
+
+    .review-list strong,
+    .review-list span {
+      display: block;
+    }
+
+    .review-list span {
+      margin-top: 5px;
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    @media (max-width: 520px) {
+      .app {
+        margin: 24px auto;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 27px;
+      }
+
+      h2 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>JS Quiz Arena</h1>
+      <p>Test your JavaScript knowledge</p>
+    </header>
+
+    <section class="card" id="quiz-card">
+      <div class="top-row">
+        <span id="question-count">Q 1/5</span>
+        <span>Score: <span id="score">0</span></span>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <h2 id="question"></h2>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="bottom-row">
+        <span class="timer">Time: <span id="timer">30</span>s</span>
+        <button class="primary" id="next-button" type="button" disabled>Next</button>
+      </div>
+    </section>
+
+    <section class="card result hidden" id="result-card">
+      <h2>Quiz Complete!</h2>
+      <p class="score" id="final-score">0/5</p>
+      <p id="rating"></p>
+      <div class="bottom-row">
+        <button class="secondary" id="review-button" type="button">Review wrong answers</button>
+        <button class="primary" id="restart-button" type="button">Restart</button>
+      </div>
+    </section>
+
+    <section class="card hidden" id="review-card">
+      <h2>Wrong Answers</h2>
+      <ul class="review-list" id="review-list"></ul>
+      <button class="primary" id="review-restart-button" type="button">Restart Quiz</button>
+    </section>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        question: "Which keyword declares a variable that cannot be reassigned?",
+        options: ["var", "let", "const", "fixed"],
+        answer: "const",
+        explanation: "The const keyword creates a variable binding that cannot be reassigned."
+      },
+      {
+        question: "What does HTML stand for?",
+        options: ["Hyper Text Markup Language", "High Text Machine Language", "Home Tool Markup Language", "Hyperlink Text Management Language"],
+        answer: "Hyper Text Markup Language",
+        explanation: "HTML means Hyper Text Markup Language and is used to structure web pages."
+      },
+      {
+        question: "Which method adds an item to the end of an array?",
+        options: ["pop()", "shift()", "push()", "add()"],
+        answer: "push()",
+        explanation: "push() adds one or more items to the end of an array."
+      },
+      {
+        question: "Which symbol is used for a single-line comment in JavaScript?",
+        options: ["<!--", "//", "##", "/*"],
+        answer: "//",
+        explanation: "Two forward slashes start a single-line comment in JavaScript."
+      },
+      {
+        question: "Which CSS property changes the text color?",
+        options: ["font-style", "text-color", "color", "foreground"],
+        answer: "color",
+        explanation: "The color property sets the foreground color of text."
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let timeLeft = 30;
+    let timerId;
+    let wrongAnswers = [];
+
+    const questionCount = document.getElementById("question-count");
+    const scoreText = document.getElementById("score");
+    const progressBar = document.getElementById("progress-bar");
+    const questionText = document.getElementById("question");
+    const optionsBox = document.getElementById("options");
+    const feedback = document.getElementById("feedback");
+    const timerText = document.getElementById("timer");
+    const nextButton = document.getElementById("next-button");
+    const quizCard = document.getElementById("quiz-card");
+    const resultCard = document.getElementById("result-card");
+    const reviewCard = document.getElementById("review-card");
+
+    function startTimer() {
+      clearInterval(timerId);
+      timeLeft = 30;
+      timerText.textContent = timeLeft;
+      timerId = setInterval(() => {
+        timeLeft -= 1;
+        timerText.textContent = timeLeft;
+        if (timeLeft === 0) {
+          clearInterval(timerId);
+          chooseAnswer(null);
+        }
+      }, 1000);
+    }
+
+    function showQuestion() {
+      const item = questions[currentQuestion];
+      questionCount.textContent = `Q ${currentQuestion + 1}/${questions.length}`;
+      progressBar.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+      questionText.textContent = item.question;
+      optionsBox.innerHTML = "";
+      feedback.textContent = "";
+      nextButton.disabled = true;
+
+      item.options.forEach((option) => {
+        const button = document.createElement("button");
+        button.className = "option";
+        button.type = "button";
+        button.textContent = option;
+        button.addEventListener("click", () => chooseAnswer(option));
+        optionsBox.appendChild(button);
+      });
+
+      startTimer();
+    }
+
+    function chooseAnswer(selectedAnswer) {
+      clearInterval(timerId);
+      const item = questions[currentQuestion];
+      const optionButtons = optionsBox.querySelectorAll(".option");
+      const isCorrect = selectedAnswer === item.answer;
+
+      optionButtons.forEach((button) => {
+        button.disabled = true;
+        if (button.textContent === item.answer) {
+          button.classList.add("correct");
+        } else if (button.textContent === selectedAnswer) {
+          button.classList.add("wrong");
+        }
+      });
+
+      if (isCorrect) {
+        score += 1;
+        scoreText.textContent = score;
+        feedback.textContent = `Correct! ${item.explanation}`;
+      } else {
+        wrongAnswers.push({
+          question: item.question,
+          selected: selectedAnswer || "No answer",
+          correct: item.answer
+        });
+        feedback.textContent = selectedAnswer === null
+          ? `Time is up. The correct answer is ${item.answer}. ${item.explanation}`
+          : `Not quite. The correct answer is ${item.answer}. ${item.explanation}`;
+      }
+
+      nextButton.disabled = false;
+    }
+
+    function showResults() {
+      clearInterval(timerId);
+      quizCard.classList.add("hidden");
+      resultCard.classList.remove("hidden");
+      document.getElementById("final-score").textContent = `${score}/${questions.length}`;
+      document.getElementById("rating").textContent = score === questions.length
+        ? "Excellent work!"
+        : score >= 3
+          ? "Good job! Keep practicing."
+          : "Keep learning and try again.";
+    }
+
+    function showReview() {
+      resultCard.classList.add("hidden");
+      reviewCard.classList.remove("hidden");
+      const reviewList = document.getElementById("review-list");
+      reviewList.innerHTML = "";
+
+      if (wrongAnswers.length === 0) {
+        reviewList.innerHTML = "<li>Great work! You got every question right.</li>";
+        return;
+      }
+
+      wrongAnswers.forEach((item) => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `<strong>${item.question}</strong><span>Your answer: ${item.selected}</span><span>Correct answer: ${item.correct}</span>`;
+        reviewList.appendChild(listItem);
+      });
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      wrongAnswers = [];
+      scoreText.textContent = "0";
+      resultCard.classList.add("hidden");
+      reviewCard.classList.add("hidden");
+      quizCard.classList.remove("hidden");
+      showQuestion();
+    }
+
+    nextButton.addEventListener("click", () => {
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion += 1;
+        showQuestion();
+      } else {
+        showResults();
+      }
+    });
+
+    document.getElementById("review-button").addEventListener("click", showReview);
+    document.getElementById("restart-button").addEventListener("click", restartQuiz);
+    document.getElementById("review-restart-button").addEventListener("click", restartQuiz);
+
+    showQuestion();
+  </script>
+</body>
+</html>

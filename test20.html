@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: black;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        }
+        .hero{
+            width: 100%;
+            min-height: 330px;
+            padding: 70px 60px 40px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            background-color: linear-gradient(
+                    120deg,
+                    #35151e,
+                    #15151e,
+                    #09090f
+                );;
+        }
+        .hero h1{
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        .hero p{
+            margin-bottom: 20px;
+            max-width: 600px;
+            line-height: 1.5;
+
+        }
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+        .btn{
+            padding: 12px 22px;
+            border-radius: 4px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .movie-selection{
+            padding: 20px 60px;
+        }
+        .movie-selection h2{
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .movie-row{
+            display: flex;
+            gap: 8px;
+
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 5px 5px 15px;
+        }
+        .movie-card{
+            padding: 12px;
+            min-width: 200px;
+            height: 100px;
+
+            flex-shrink: 0;
+            border-radius: 3px;
+            display: flex;
+            align-items: flex-end;
+
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+
+            transition: transform 0.2s ease;
+        }
+        .movie-card:hover{
+            transform: scale(1.05);
+        }
+        .pink {
+            background: linear-gradient(
+                135deg,
+                #d9437a,
+                #7665d9
+            );
+        }
+
+        .blue {
+            background: linear-gradient(
+                135deg,
+                #0086a8,
+                #06465c
+            );
+        }
+
+        .yellow {
+            background: linear-gradient(
+                135deg,
+                #ffb300,
+                #ffcf45
+            );
+            color: #222;
+        }
+
+        .lightblue {
+            background: linear-gradient(
+                135deg,
+                #008de0,
+                #2474ff
+            );
+        }
+
+        .red {
+            background: linear-gradient(
+                135deg,
+                #ff3c78,
+                #ff553c
+            );
+        }
+
+        .dark {
+            background: linear-gradient(
+                135deg,
+                #3d444c,
+                #20252b
+            );
+        }
+
+        .green {
+            background: linear-gradient(
+                135deg,
+                #20b96c,
+                #74d62b
+            );
+            color: #222;
+        }
+
+        @media (min-width: 600px) and (max-width: 1023px) {
+
+            .hero {
+                padding: 55px 35px 35px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .movie-section {
+                padding: 18px 35px;
+            }
+
+            .movie-card {
+                min-width: 150px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>Midnight Horizon</h1>
+
+        <p>A stranded astronaut must choose between saving her crew or completing humanity's last mission before the signal fades forever.</p>
+
+        <div class="buttons">
+            <button class="btn play">Play</button>
+            <button class="btn info">More info</button>
+        </div>
+    </section>
+
+    <section class="movie-selection">
+        <h2>Trending Movies</h2>
+        <div class="movie-row">
+            <div class="movie-card yellow">
+                Echo Chamber
+            </div>
+
+            <div class="movie-card red">
+                Glass City
+            </div>
+
+            <div class="movie-card pink">
+                Neon Drift
+            </div>
+
+            <div class="movie-card red">
+                Wildfire
+            </div>
+
+            <div class="movie-card blue">
+                Silent Harbor
+            </div>
+
+            <div class="movie-card dark">
+                The Long Dark
+            </div>
+        </div>
+    </section>
+
+    <section class="movie-selection">
+        <h2>Action Movies</h2>
+        <div class="movie-row">
+            <div class="movie-card yellow">
+                Echo Chamber
+            </div>
+
+            <div class="movie-card red">
+                Glass City
+            </div>
+
+            <div class="movie-card pink">
+                Neon Drift
+            </div>
+
+            <div class="movie-card red">
+                Wildfire
+            </div>
+
+            <div class="movie-card blue">
+                Silent Harbor
+            </div>
+
+            <div class="movie-card dark">
+                The Long Dark
+            </div>
+        </div>
+    </section>
+
+    <section class="movie-selection">
+        <h2>Latest Movies</h2>
+        <div class="movie-row">
+            <div class="movie-card yellow">
+                Echo Chamber
+            </div>
+
+            <div class="movie-card red">
+                Glass City
+            </div>
+
+            <div class="movie-card pink">
+                Neon Drift
+            </div>
+
+            <div class="movie-card red">
+                Wildfire
+            </div>
+
+            <div class="movie-card blue">
+                Silent Harbor
+            </div>
+
+            <div class="movie-card dark">
+                The Long Dark
+            </div>
+        </div>
+    </section>
+</body>
+</html>

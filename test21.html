@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TilePress - Masonry Gallery</title>
+
+    <style>
+        /* 1. RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+            color: #222;
+        }
+
+        /* 2. STICKY NAVBAR */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            padding: 15px 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            color: #bd3038;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .search {
+            flex: 1;
+            max-width: 600px;
+            padding: 13px 18px;
+            border: none;
+            border-radius: 25px;
+            background: #eeeeee;
+            outline: none;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 20px;
+        }
+
+        /* 3. MAIN GALLERY - CSS GRID */
+        .gallery {
+            padding: 15px 20px;
+
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            grid-auto-rows: 8px;
+            gap: 12px;
+            grid-auto-flow: dense;
+        }
+
+        /* 4. INDIVIDUAL CARDS */
+        .card {
+            min-width: 0;
+            overflow: hidden;
+            border-radius: 9px;
+            background: #f5f5f5;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Placeholder image */
+        .image {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            border-radius: 8px;
+
+            background: linear-gradient(
+                145deg,
+                var(--c1),
+                var(--c2)
+            );
+        }
+
+        /* Different image colors */
+        .c1 { --c1: #c75b43; --c2: #e7a07b; }
+        .c2 { --c1: #08b7bd; --c2: #087fa9; }
+        .c3 { --c1: #e4b400; --c2: #e99a60; }
+        .c4 { --c1: #aaa3e8; --c2: #e4c5e7; }
+        .c5 { --c1: #23d5a0; --c2: #77c9d8; }
+        .c6 { --c1: #9ed3d8; --c2: #e4e7f5; }
+        .c7 { --c1: #9b83c7; --c2: #e5a9cc; }
+        .c8 { --c1: #16aa62; --c2: #8cce71; }
+        .c9 { --c1: #df8d59; --c2: #f0ca57; }
+        .c10 { --c1: #087dba; --c2: #182b70; }
+        .c11 { --c1: #d94785; --c2: #f39fbd; }
+        .c12 { --c1: #c7b5eb; --c2: #8edbd0; }
+
+        /* 5. MASONRY HEIGHTS
+           Each span unit = 8px plus grid gaps */
+
+        .short {
+            grid-row: span 24;
+        }
+
+        .medium {
+            grid-row: span 32;
+        }
+
+        .tall {
+            grid-row: span 42;
+        }
+
+        .xtall {
+            grid-row: span 52;
+        }
+
+        /* 6. CARD TEXT AND FOOTER */
+        .card-info {
+            padding: 8px 5px 4px;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .card-title {
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 5px;
+            color: #777;
+            font-size: 10px;
+        }
+
+        .avatar {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: #d0d0d0;
+        }
+
+        /* 7. TABLET: 3 COLUMNS */
+        @media (min-width: 700px) and (max-width: 1199px) {
+            .gallery {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
+                padding: 12px;
+            }
+
+            .navbar {
+                gap: 12px;
+            }
+
+            .search {
+                max-width: 450px;
+            }
+        }
+
+        /* 8. MOBILE: 2 COLUMNS */
+        @media (max-width: 699px) {
+            .navbar {
+                padding: 12px;
+                gap: 10px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .search {
+                min-width: 0;
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            .nav-icons {
+                gap: 8px;
+                font-size: 16px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 8px;
+                padding: 8px;
+            }
+
+            .card-info {
+                padding: 6px 3px;
+                font-size: 11px;
+            }
+
+            .footer {
+                font-size: 9px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header class="navbar">
+
+        <div class="logo">TilePress</div>
+
+        <input
+            type="search"
+            class="search"
+            placeholder="Search for ideas"
+        >
+
+        <div class="nav-icons">
+            <span aria-label="Notifications">♟</span>
+            <span aria-label="Messages">▢</span>
+            <span aria-label="Profile">●</span>
+        </div>
+
+    </header>
+
+    <!-- MASONRY GALLERY -->
+    <main class="gallery">
+
+        <article class="card xtall">
+            <div class="image c1"></div>
+            <div class="card-info">
+                <div class="card-title">Autumn cabin mood board</div>
+                <div class="footer">
+                    <span class="avatar"></span>
+                    <span>@sunset</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card tall">
+            <div class="image c2"></div>
+            <div class="card-info">
+                <div class="card-title">Minimal desk setup</div>
+                <div class="footer">
+                    <span class="avatar"></span>
+                    <span>@workspace</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card xtall">
+            <div class="image c3"></div>
+            <div class="card-info">
+                <div class="card-title">Terracotta kitchen renovation, before and after</div>
+                <div class="footer">
+                    <span class="avatar"></span>
+                    <span>@homeideas</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card tall">
+            <div class="image c4"></div>
+            <div class="card-info">
+                <div class="card-title">Lavender field wallpaper</div>
+                <div class="footer">
+                    <span class="avatar"></span>
+                    <span>@skylerm</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card medium">
+            <div class="image c5"></div>
+            <div class="card-info">
+                <div class="card-title">Weekend hike essentials</div>
+                <div class="footer">
+                    <span class="avatar"></span>
+                    <span>@outdoors</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card medium">
+            <div class="image c6"></div>
+            <div class="card-info">
+                <div class="card-title">Cloud typography poster</div>
+                <div class="footer">
+                    <span class="avatar"></span>
+                    <span>@design</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card tall">
+            <div class="image c7"></div>
+            <div class="card-info">
+                <div class="card-title">Sunset gradient nail art ideas</div>
+                <div class="footer">
+                    <span class="avatar"></span>
+                    <span>@glowup</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card xtall">
+            <div class="image c8"></div>
+            <div class="card-info">
+                <div class="card-title">Balcony herb garden layout</div>
+                <div class="footer">
+                    <span class="avatar"></span>
+                    <span>@greenthumb</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card medium">
+            <div class="image c9"></div>
+            <div class="card-info">
+                <div class="card-title">Capsule wardrobe: 12 pieces, 30 outfits</div>
+                <div class="footer">
+                    <span class="avatar"></span>
+                    <span>@everyday</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card tall">
+            <div class="image c10"></div>
+            <div class="card-info">
+                <div class="card-title">Deep-sea color palette</div>
+                <div class="footer">
+                    <span class="avatar"></span>
+                    <span>@blueprint</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card xtall">
+            <div class="image c11"></div>
+            <div class="card-info">
+                <div class="card-title">Sourdough starter troubleshooting guide</div>
+                <div class="footer">
+                    <span class="avatar"></span>
+                    <span>@baking</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card medium">
+            <div class="image c12"></div>
+            <div class="card-info">
+                <div class="card-title">Rainy day reading corner</div>
+                <div class="footer">
+                    <span class="avatar"></span>
+                    <span>@booklover</span>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+</body>
+</html>

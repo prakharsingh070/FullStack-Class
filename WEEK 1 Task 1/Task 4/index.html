@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reaction Timer</title>
+  <style>
+    /* Minimal layout for the clickable test box */
+    #box {
+      width: 250px;
+      height: 200px;
+      border: 2px solid black;
+      background-color: lightcoral;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      margin-top: 15px;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Reaction Timer</h2>
+  <button id="start-btn">Start Test</button>
+
+  <div id="box">Click "Start Test" to begin</div>
+
+  <p>Result: <span id="result">-</span></p>
+  <p>Best Time: <span id="best-time">-</span></p>
+
+  <script src="index.js"></script>
+</body>
+</html>

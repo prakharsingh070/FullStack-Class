@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Whack-a-Mole</title>
+  <style>
+    /* Minimal layout just so the 3x3 grid renders properly */
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(3, 80px);
+      grid-gap: 5px;
+      margin-top: 10px;
+    }
+    .cell {
+      width: 80px;
+      height: 80px;
+      border: 1px solid black;
+      text-align: center;
+      line-height: 80px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+    /* Class toggled on the active cell */
+    .active {
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Whack-a-Mole</h2>
+  <button id="start-btn">Start Game</button>
+  <p>Score: <span id="score">0</span></p>
+  <p>Time Left: <span id="time">30</span>s</p>
+
+  <div id="grid"></div>
+
+  <script src="index.js"></script>
+</body>
+</html>
